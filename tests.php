@@ -5,5 +5,7 @@
 
 	#$mongodb->setDebug(1);
 
+	$mongodb->insertDocument(["hallo" => "welt"]);
+
 	print_r($mongodb->find());
 ?>

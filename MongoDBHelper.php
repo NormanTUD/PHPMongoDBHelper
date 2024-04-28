@@ -219,13 +219,13 @@
 			if (is_array($data)) {
 				$result = [];
 				foreach ($data as $key => $value) {
-					$result[$key] = convertNumericStrings($value);
+					$result[$key] = $this->convertNumericStrings($value);
 				}
 				return $result;
 			} elseif (is_object($data)) {
 				$result = [];
 				foreach ($data as $key => $value) {
-					$result[$key] = convertNumericStrings($value);
+					$result[$key] = $this->convertNumericStrings($value);
 				}
 				return $result;
 			} elseif (is_string($data)) {
