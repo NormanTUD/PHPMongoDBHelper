@@ -205,7 +205,7 @@
 	$mongodb->replaceDocument($replace_first_id, ["x" => ["y" => 1]]);
 
 	$entries_in_db = $mongodb->find();
-	is_equal('json_encode($entries_in_db)', json_encode($entries_in_db), 1);
+	regex_matches('json_encode($entries_in_db)', json_encode($entries_in_db), '/\[\{"_id":\{"\$oid":"[a-z0-9]*"\},"hallo":"welt","x":\{"y":1\}\}\]/');
 
 	print($mongodb->count()."\n");
 ?>
