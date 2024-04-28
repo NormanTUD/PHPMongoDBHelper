@@ -8,6 +8,7 @@
 
 		public function __construct($mongodbHost = "localhost", $mongodbPort = 27017, $databaseName, $collectionName) {
 			$mongoConnectionString = "mongodb://{$mongodbHost}:{$mongodbPort}";
+			$this->mongoConnectionString = "mongodb://{$mongodbHost}:{$mongodbPort}";
 			$this->mongoClient = new MongoDB\Driver\Manager($mongoConnectionString);
 			$this->collectionName = $collectionName;
 			$this->databaseName = $databaseName;
@@ -190,7 +191,11 @@
 
 		public function executeQuery($query) {
 			$this->debug(["executeQuery" => ["query" => $query]]);
-			return $this->mongoClient->executeQuery($this->namespace, $query);
+			try {
+				return $this->mongoClient->executeQuery($this->namespace, $query);
+			} catch (MongoDB\Driver\Exception\ConnectionTimeoutException) {
+				die("Could not connect to MongoDB. Is it available over $this->mongoConnectionString?\n");
+			}
 		}
 
 		public function createId ($id) {
