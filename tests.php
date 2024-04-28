@@ -5,5 +5,5 @@
 
 	#$mongodb->setDebug(1);
 
-	print($mongodb->find());
+	print_r($mongodb->find());
 ?>
