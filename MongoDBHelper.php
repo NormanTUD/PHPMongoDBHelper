@@ -287,7 +287,7 @@
 
 		public function count($query = []) {
 			$cursor = $this->executeQuery($this->query($query));
-			return $cursor->count();
+			return count($cursor->toArray());
 		}
 
 		public function deleteMany($query) {
