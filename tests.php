@@ -182,7 +182,7 @@
 
 	#$mongodb->setDebug(1);
 
-	$mongodb->insertDocument(["hallo" => "welt"]);
+	regex_matches("insertDocument", $mongodb->insertDocument(["hallo" => "welt"]), "/success/");
 
 	$entries_in_db = $mongodb->find();
 
