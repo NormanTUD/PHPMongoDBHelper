@@ -6,7 +6,7 @@
 		private $collectionName;
 		private $databaseName;
 
-		public function __construct($mongodbHost = "localhost", $mongodbPort = 27017, $databaseName = "test", $collectionName = "Tzwei") {
+		public function __construct($mongodbHost = "localhost", $mongodbPort = 27017, $databaseName, $collectionName) {
 			$mongoConnectionString = "mongodb://{$mongodbHost}:{$mongodbPort}";
 			$this->mongoClient = new MongoDB\Driver\Manager($mongoConnectionString);
 			$this->collectionName = $collectionName;
